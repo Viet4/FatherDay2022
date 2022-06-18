@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8"/>
+    <title>Father's Day eCard</title>
+
+    <script src="https://aframe.io/releases/1.0.4/aframe.min.js"></script>
+    <script src="https://cdn.rawgit.com/elbobo/aframe-multisrc-component/b6d23310/dist/0.3/aframe-multisrc-component.js"></script>
+    
+    <script src="./js/openCard.js"></script>
+  </head>
+  <body>
+    <a-scene id="scene" renderer="colorManagement:true" background="color:#bad8d9">
+      <a-assets>
+        <img id="card-cover" src="./assets/card_cover.png"/>
+        <img id="caution" src="./assets/caution.jpg"/>
+        <img id="poem" src="./assets/poem.png"/>
+      </a-assets>
+
+      <a-entity
+        id="camera"
+        camera
+        look-controls="pointerLockEnabled:true;"
+        wasd-controls
+        position="0 20 0"
+        open-card
+      ><a-cursor></a-cursor></a-entity>
+
+      <a-entity id="item-container" rotation="-10 0 0">
+        <a-entity
+          id="card-page-1-container"
+          position="0 1 -12.5"
+          open-card>
+          <a-entity
+            id="card-page-1"
+            position="4.25 0 0"
+            rotation="0 0 0"
+            geometry="primitive:box; width:8.5; height:11; depth:0.125"
+            material="color:#f2f2f2;"
+            multisrc="src4:#card-cover; src5:#caution"
+          ></a-entity>
+          <a-entity
+            id="card-page-1-border"
+            position="4.25 0 0"
+            rotation="0 0 0"
+            geometry="primitive:plane; width:9; height:11.5"
+            material="color:#1C76DF; opacity: 0"
+          ></a-entity>
+        </a-entity>
+
+        <a-entity
+          id="card-page-2"
+          position="4.25 1 -12.5"
+          geometry="primitive:box; width:8.5; height:11; depth:0.125"
+          material="color:#f2f2f2; opacity:0"
+          multisrc="src4:#poem"
+        ></a-entity>
+      </a-entity>
+    </a-scene>
+  </body>
+</html>
